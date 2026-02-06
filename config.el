@@ -104,3 +104,33 @@
 	"bn" '(next-buffer :wk "Next buffer")
 	"bp" '(previous-buffer :wk "Previous buffer")
 	"br" '(revert-buffer :wk "Reload buffer")))
+
+(set-face-attribute 'default nil
+      :font "JetBrainsMono Nerd Font"
+      :height 150
+      :weight 'medium)
+
+(set-face-attribute 'variable-pitch nil
+    :font "Ubuntu"
+    :height 150
+    :weight 'medium)
+
+(set-face-attribute 'fixed-pitch nil
+    :font "JetBrainsMono Nerd Font"
+    :height 150
+    :weight 'medium)
+
+;; Makes commented text and keywords italicized
+;; This works in emacsclient but not emacs.
+;; Font must have an italic face available
+(set-face-attribute 'font-lock-comment-face nil
+    :slant 'italic)
+
+(set-face-attribute 'font-lock-keyword-face nil
+    :slant 'italic)
+
+;; This sets the default font on graphical frames
+(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-15"))
+
+;; Set line spacing
+(setq-default line-spacing 0.14)

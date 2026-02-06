@@ -75,3 +75,23 @@
 ;;Note this will cause evaluate the declaration immediately. It is not deferred.
 ;;Useful for configuring built-in emacs features.
 (use-package emacs :ensure nil :config (setq ring-bell-function #'ignore))
+
+(use-package general
+    :config
+    (general-evil-setup)
+
+    ;; Set up  'SPC' as the global leader key
+    (general-create-definer rv/leader-keys
+	:states '(normal insert visual emacs)
+	:keymaps 'override
+	:prefix "SPC"  ;; set leader key
+	:global-prefix "M-SPC")  ;; access leader in insert mode
+
+    (rv/leader-keys
+	"b" '(:ignore t :wk "buffer")
+	"bb" '(switch-to-buffer :wk "Switch buffer")
+	"bk" '(kill-this-buffer :wk "Kill this buffer")
+	"bn" '(next-buffer :wk "Next buffer")
+	"bp" '(previous-buffer :wk "Previous buffer")
+        "br" '(revert-buffer :wk "Reload buffer"))
+)

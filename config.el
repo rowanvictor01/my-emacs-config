@@ -135,12 +135,22 @@
 ;; Set line spacing
 (setq-default line-spacing 0.14)
 
-(menu-bar-mode -1)
+;;(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
+
+(use-package toc-org
+    :ensure (:wait t)
+    :demand t
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
+
+(add-hook 'org-mode-hook 'org-indent-mode)
+(use-package org-bullets :ensure (:wait t) :demand t)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (use-package which-key
     :ensure (:wait t)

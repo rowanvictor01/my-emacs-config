@@ -131,7 +131,6 @@
 * FONTS
 Defining the various fonts that Emacs will use.
 
-** Setting The Font Face
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
 	:font "JetBrainsMono Nerd Font"
@@ -164,4 +163,18 @@ Defining the various fonts that Emacs will use.
   (setq-default line-spacing 0.14)
 #+end_src
 
-#+RESULTS:
+
+* GUI TWEAKS
+
+** Disable Menubar, Toolbar and Scrollbar
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+#+end_src
+
+** Display Line Numbers and Truncated Lines
+#+begin_src emacs-lisp
+  (global-display-line-numbers-mode 1)
+  (global-visual-line-mode t)
+#+end_src

@@ -134,3 +134,10 @@
 
 ;; Set line spacing
 (setq-default line-spacing 0.14)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)

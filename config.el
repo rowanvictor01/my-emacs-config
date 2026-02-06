@@ -55,21 +55,28 @@
 
 ;; [EVIL MODE]
 ;; Expands to: (elpaca evil (use-package evil :demand t))
-(use-package evil :ensure t :demand t
+(use-package evil
+  :ensure (:wait t)  ; Block until installed
+  :demand t  ; Load immediately (not deffered)
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
-  (evil-mode))
+  :config
+  (evil-mode 1))
 
 (use-package evil-collection
+    :ensure (:wait t)  ; CRITICAL: wait for install
     :after evil
+    :demand t  ; CRITICAL: load immediately after evil
     :config
     (setq evil-collection-mode-list '(dashboard dired ibuffer))
     (evil-collection-init))
 
-(use-package evil-tutor)
+(use-package evil-tutor
+  :ensure (:wait t)
+  :demand t)
 
 ;;Turns off elpaca-use-package-mode current declaration
 ;;Note this will cause evaluate the declaration immediately. It is not deferred.
@@ -77,6 +84,9 @@
 (use-package emacs :ensure nil :config (setq ring-bell-function #'ignore))
 
 (use-package general
+    :ensure (:wait t)
+    :demand t  ; Must load before defining keys
+    :after evil
     :config
     (general-evil-setup)
 
@@ -93,5 +103,4 @@
 	"bk" '(kill-this-buffer :wk "Kill this buffer")
 	"bn" '(next-buffer :wk "Next buffer")
 	"bp" '(previous-buffer :wk "Previous buffer")
-        "br" '(revert-buffer :wk "Reload buffer"))
-)
+	"br" '(revert-buffer :wk "Reload buffer")))

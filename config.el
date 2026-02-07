@@ -139,8 +139,12 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Enable line numbers
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
+
+;; Set the line numbering style to relative
+(setq display-line-numbers-type 'relative)
 
 (use-package toc-org
     :ensure (:wait t)

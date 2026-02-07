@@ -102,7 +102,7 @@
 	:after evil
 	:demand t  ; CRITICAL: load immediately after evil
 	:config
-	(setq evil-collection-mode-list '(dashboard dired ibuffer))
+	(setq evil-collection-mode-list '(dashboard dired ibuffer term))
 	(evil-collection-init))
 
     (use-package evil-tutor

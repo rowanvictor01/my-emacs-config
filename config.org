@@ -132,6 +132,12 @@
           :prefix "SPC"  ;; set leader key
           :global-prefix "M-SPC")  ;; access leader in insert mode
 
+  ;; Find File, Open config.org, Comment Line
+      (rv/leader-keys
+           "." '(find-file :wk "Find File")
+           "fc" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit Emacs Config")
+           "TAB TAB" '(comment-line :wk "Comment Line/s"))
+
   ;; Buffer
       (rv/leader-keys
           "b" '(:ignore t :wk "Buffer")

@@ -4,6 +4,22 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
+
+* TABLE OF CONTENTS :toc:
+- [[#important-programs-to-load-first][IMPORTANT PROGRAMS TO LOAD FIRST]]
+  - [[#elpaca-package-manager][ELPACA PACKAGE MANAGER]]
+  - [[#load-evil-mode-package][LOAD EVIL MODE PACKAGE]]
+  - [[#general-keybindings][GENERAL Keybindings]]
+  - [[#avy-package][AVY Package]]
+- [[#fonts][FONTS]]
+- [[#gui-tweaks][GUI TWEAKS]]
+  - [[#disable-menubar-toolbar-and-scrollbar][Disable Menubar, Toolbar and Scrollbar]]
+  - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
+- [[#org-mode][ORG MODE]]
+  - [[#enabling-table-of-contents][Enabling Table Of Contents]]
+  - [[#enabling-org-bullets][Enabling Org Bullets]]
+- [[#which-key-package][WHICH KEY PACKAGE]]
+
 * IMPORTANT PROGRAMS TO LOAD FIRST
 
 ** ELPACA PACKAGE MANAGER 
@@ -168,7 +184,7 @@ Defining the various fonts that Emacs will use.
 
 ** Disable Menubar, Toolbar and Scrollbar
 #+begin_src emacs-lisp
-  ;;(menu-bar-mode -1)
+  (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 #+end_src

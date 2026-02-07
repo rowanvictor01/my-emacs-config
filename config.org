@@ -136,10 +136,11 @@
       (rv/leader-keys
           "b" '(:ignore t :wk "Buffer")
           "bb" '(switch-to-buffer :wk "Switch Buffer")
+          "bi" '(ibuffer :wk "Ibuffer")
           "bk" '(kill-this-buffer :wk "Kill This Buffer")
           "bn" '(next-buffer :wk "Next Buffer")
           "bp" '(previous-buffer :wk "Previous Buffer")
-          "br" '(revert-buffer :wk "Reload Buffer")))
+          "br" '(revert-buffer :wk "Reload Buffer"))
 
   ;; Evaluate
       (rv/leader-keys
@@ -149,6 +150,10 @@
           "ee" '(eval-expression :wk "Evaluate An Elisp Expression")
           "el" '(eval-last-sexp :wk "Evaluate Elisp Expression Before Point")
           "er" '(eval-region :wk "Evaluate Elisp In Region"))
+
+  ;; term-mode
+      (rv/leader-keys
+          "t" '(term :wk "Open term-mode"))
 #+end_src
 
 ** AVY Package 

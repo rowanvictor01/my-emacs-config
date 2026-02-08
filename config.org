@@ -12,6 +12,8 @@
   - [[#general-keybindings][GENERAL Keybindings]]
   - [[#avy-package][AVY Package]]
 - [[#fonts][FONTS]]
+  - [[#setting-the-font-face][Setting The Font Face]]
+  - [[#zooming-inout][Zooming In/Out]]
 - [[#gui-tweaks][GUI TWEAKS]]
   - [[#disable-menubar-toolbar-and-scrollbar][Disable Menubar, Toolbar and Scrollbar]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
@@ -177,6 +179,7 @@
 * FONTS
 Defining the various fonts that Emacs will use.
 
+** Setting The Font Face
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
 	:font "JetBrainsMono Nerd Font"
@@ -207,6 +210,14 @@ Defining the various fonts that Emacs will use.
 
   ;; Set line spacing
   (setq-default line-spacing 0.14)
+#+end_src
+
+** Zooming In/Out
+Bindings for quickly zooming in and out
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-=") 'text-scale-increase)
+  (global-set-key (kbd "C--") 'text-scale-decrease)
 #+end_src
 
 

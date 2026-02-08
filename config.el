@@ -129,6 +129,12 @@
         "hv" '(describe-variable :wk "Describe Variable")
         "hrr" '((lambda () (interactive) (load-file "~/.config/emacs/init.el")) :wk "Reload Emacs Config"))
 
+;; Register
+    (rv/leader-keys
+        "r" '(:ignore t :wk "Register")
+        "rb" '(point-to-register :wk "Save Buffer To Register")
+        "rj" '(jump-to-register :wk "Jump To Register"))
+
 ;; term-mode
     (rv/leader-keys
         "t" '(term :wk "Open term-mode"))

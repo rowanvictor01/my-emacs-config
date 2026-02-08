@@ -22,6 +22,7 @@
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
   - [[#enable-org-tempo][Enable Org Tempo]]
+- [[#sudo-edit][SUDO EDIT]]
 - [[#which-key-package][WHICH KEY PACKAGE]]
 
 * IMPORTANT PROGRAMS TO LOAD FIRST
@@ -273,6 +274,20 @@ Org mode's built-in function for quickly creating a src block
 
 #+begin_src emacs-lisp
   (require 'org-tempo)
+#+end_src
+
+
+* SUDO EDIT
+sudo-edit gives the ability to open files with sudo privileges or switch to editing with sudo privileges
+
+#+begin_src emacs-lisp
+  (use-package sudo-edit
+    :ensure (:wait t)
+    :demand t
+    :config
+      (rv/leader-keys
+        "s." '(sudo-edit-find-file :wk "Sudo Find File")
+        "se" '(sudo-edit :wk "Sudo Edit File")))
 #+end_src
 
 

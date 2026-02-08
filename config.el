@@ -191,6 +191,14 @@
 
 (require 'org-tempo)
 
+(use-package sudo-edit
+  :ensure (:wait t)
+  :demand t
+  :config
+    (rv/leader-keys
+      "s." '(sudo-edit-find-file :wk "Sudo Find File")
+      "se" '(sudo-edit :wk "Sudo Edit File")))
+
 (use-package which-key
     :ensure (:wait t)
     :demand t  ; Must load before defining keys

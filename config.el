@@ -127,7 +127,7 @@
         "h" '(:ignore t :wk "Help")
         "hf" '(describe-function :wk "Describe Function")
         "hv" '(describe-variable :wk "Describe Variable")
-        "hrr" '(reload-init-file :wk "Reload Emacs Config"))
+        "hrr" '((lambda () (interactive) (load-file "~/.config/emacs/init.el")) :wk "Reload Emacs Config"))
 
 ;; term-mode
     (rv/leader-keys

@@ -157,6 +157,13 @@
           "el" '(eval-last-sexp :wk "Evaluate Elisp Expression Before Point")
           "er" '(eval-region :wk "Evaluate Elisp In Region"))
 
+  ;; Help
+      (rv/leader-keys
+          "h" '(:ignore t :wk "Help")
+          "hf" '(describe-function :wk "Describe Function")
+          "hv" '(describe-variable :wk "Describe Variable")
+          "hrr" '(reload-init-file :wk "Reload Emacs Config"))
+
   ;; term-mode
       (rv/leader-keys
           "t" '(term :wk "Open term-mode"))

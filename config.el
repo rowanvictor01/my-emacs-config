@@ -88,22 +88,43 @@
     :demand t  ; Must load before defining keys
     :after evil
     :config
-    (general-evil-setup)
+    (general-evil-setup))
 
     ;; Set up  'SPC' as the global leader key
     (general-create-definer rv/leader-keys
-	:states '(normal insert visual emacs)
-	:keymaps 'override
-	:prefix "SPC"  ;; set leader key
-	:global-prefix "M-SPC")  ;; access leader in insert mode
+        :states '(normal insert visual emacs)
+        :keymaps 'override
+        :prefix "SPC"  ;; set leader key
+        :global-prefix "M-SPC")  ;; access leader in insert mode
 
+;; Find File, Open config.org, Comment Line
     (rv/leader-keys
-	"b" '(:ignore t :wk "buffer")
-	"bb" '(switch-to-buffer :wk "Switch buffer")
-	"bk" '(kill-this-buffer :wk "Kill this buffer")
-	"bn" '(next-buffer :wk "Next buffer")
-	"bp" '(previous-buffer :wk "Previous buffer")
-	"br" '(revert-buffer :wk "Reload buffer")))
+         "." '(find-file :wk "Find File")
+         "fc" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit Emacs Config")
+         "TAB TAB" '(comment-line :wk "Comment Line/s"))
+
+;; Buffer
+    (rv/leader-keys
+        "b" '(:ignore t :wk "Buffer")
+        "bb" '(switch-to-buffer :wk "Switch Buffer")
+        "bi" '(ibuffer :wk "Ibuffer")
+        "bk" '(kill-this-buffer :wk "Kill This Buffer")
+        "bn" '(next-buffer :wk "Next Buffer")
+        "bp" '(previous-buffer :wk "Previous Buffer")
+        "br" '(revert-buffer :wk "Reload Buffer"))
+
+;; Evaluate
+    (rv/leader-keys
+        "e" '(:ignore t :wk "Evaluate")
+        "eb" '(eval-buffer :wk "Evaluate Elisp In Buffer")
+        "ed" '(eval-defun :wk "Evaluate Defun Containing Or After Point")
+        "ee" '(eval-expression :wk "Evaluate An Elisp Expression")
+        "el" '(eval-last-sexp :wk "Evaluate Elisp Expression Before Point")
+        "er" '(eval-region :wk "Evaluate Elisp In Region"))
+
+;; term-mode
+    (rv/leader-keys
+        "t" '(term :wk "Open term-mode"))
 
 (set-face-attribute 'default nil
       :font "JetBrainsMono Nerd Font"

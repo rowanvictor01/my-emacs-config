@@ -132,7 +132,7 @@
 ;; Register
     (rv/leader-keys
         "r" '(:ignore t :wk "Register")
-        "rb" '(point-to-register :wk "Save Buffer To Register")
+        "rb" '(point-to-register :wk "Register Buffer")
         "rj" '(jump-to-register :wk "Jump To Register"))
 
 ;; term-mode

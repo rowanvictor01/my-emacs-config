@@ -11,6 +11,7 @@
   - [[#load-evil-mode-package][LOAD EVIL MODE PACKAGE]]
   - [[#general-keybindings][GENERAL Keybindings]]
   - [[#avy-package][AVY Package]]
+- [[#all-the-icons][ALL THE ICONS]]
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting The Font Face]]
   - [[#zooming-inout][Zooming In/Out]]
@@ -184,6 +185,22 @@
 ** AVY Package 
 
 
+* ALL THE ICONS
+This is an icon set that can be used with dashboard, dired, ibuffer, and other Emacs programs
+
+#+begin_src emacs-lisp
+(use-package all-the-icons
+  :ensure (:wait t)
+  :demand t
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :ensure (:wait t)
+  :demand t
+  :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
+#+end_src
+
+
 * FONTS
 Defining the various fonts that Emacs will use.
 
@@ -256,7 +273,7 @@ Bindings for quickly zooming in and out
 + Counsel, a collection of Ivy-enhanced versions of common Emacs commands
 + Ivy-rich allows us to add descriptions alongside the commands in M-x
   
-#+begin_src 
+#+begin_src emacs-lisp
 (use-package counsel
   :ensure (:wait t)
   :demand t

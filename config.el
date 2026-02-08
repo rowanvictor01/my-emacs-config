@@ -139,6 +139,16 @@
     (rv/leader-keys
         "t" '(term :wk "Open term-mode"))
 
+(use-package all-the-icons
+  :ensure (:wait t)
+  :demand t
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :ensure (:wait t)
+  :demand t
+  :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
+
 (set-face-attribute 'default nil
       :font "JetBrainsMono Nerd Font"
       :height 150

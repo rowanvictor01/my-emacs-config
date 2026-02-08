@@ -18,6 +18,8 @@
 - [[#org-mode][ORG MODE]]
   - [[#enabling-table-of-contents][Enabling Table Of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
+  - [[#disable-electric-indent][Disable Electric Indent]]
+  - [[#enable-org-tempo][Enable Org Tempo]]
 - [[#which-key-package][WHICH KEY PACKAGE]]
 
 * IMPORTANT PROGRAMS TO LOAD FIRST
@@ -246,6 +248,20 @@ Defining the various fonts that Emacs will use.
   (add-hook 'org-mode-hook 'org-indent-mode)
   (use-package org-bullets :ensure (:wait t) :demand t)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+** Disable Electric Indent
+Disable Org mode's default indentation behavior
+
+#+begin_src emacs-lisp
+  (electric-indent-mode -1)
+#+end_src
+
+** Enable Org Tempo
+Org mode's built-in function for quickly creating a src block
+
+#+begin_src emacs-lisp
+  (require 'org-tempo)
 #+end_src
 
 

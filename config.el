@@ -184,6 +184,10 @@
 (use-package org-bullets :ensure (:wait t) :demand t)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+(electric-indent-mode -1)
+
+(require 'org-tempo)
+
 (use-package which-key
     :ensure (:wait t)
     :demand t  ; Must load before defining keys

@@ -97,11 +97,19 @@
         :prefix "SPC"  ;; set leader key
         :global-prefix "M-SPC")  ;; access leader in insert mode
 
-;; Find File, Open config.org, Comment Line
+;; Find File, Open config.org, Comment Line, etc...
     (rv/leader-keys
          "." '(find-file :wk "Find File")
          "fc" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit Emacs Config")
-         "TAB TAB" '(comment-line :wk "Comment Line/s"))
+         "TAB TAB" '(comment-line :wk "Comment Line/s")
+
+
+;; Opening a buffer to a split window
+         "fw" '(find-file-other-window :wk "Find File -> Split")
+         "dw" '(dired-other-window :wk "Dired -> Split"))
+  (setq split-height-threshold 1   ; Always prefer vertical splits (side-by-side)
+      even-window-sizes t)         ; Keep windows balanced after splits
+
 
 ;; Buffer
     (rv/leader-keys

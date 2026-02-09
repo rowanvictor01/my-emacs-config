@@ -292,3 +292,12 @@
 	  which-key-max-description-length 25
 	  which-key-allow-imprecise-window-fit t
           which-key-separator " -> " ))
+
+;; Disable auto-save files
+(setq auto-save-default nil)
+
+;; Disable backup files
+(setq make-backup-files nil)
+
+;; Disable auto-save list directory
+(setq auto-save-list-file-prefix nil)

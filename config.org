@@ -233,9 +233,20 @@
 ** LSP
 
 #+begin_src emacs-lisp
-  ;; Odin
-  (use-package odin-mode :ensure (:wait t) :demand t)
-  
+
+  ;; ODIN SETUP
+  ;; Path to odin syntax highlighting script
+  (load "~/odin-mode/odin-mode.el")
+  ;; Odin Mode for syntax highlighting, indentation, compile/run commands directly in Emacs
+  (package-vc-install "https://git.sr.ht/~mgmarlow/odin-mode")
+  (use-package odin-mode
+    :ensure (:wait t)
+    :demand t
+    :bind (:map odin-mode-map
+                ("C-c C-r" . 'odin-run-project)
+                ("C-c C-c" . 'odin-build-project)
+                ("C-c C-t" . 'odin-test-project)))
+
   ;; LSP
   (use-package lsp-mode
     :ensure (:wait t)

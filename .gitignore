@@ -6,3 +6,6 @@ eshell/
 eshell/
 recentf
 projectile-bookmarks.eld
+.cache/
+elpa/
+.lsp-session-v1

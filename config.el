@@ -103,6 +103,7 @@
          "fc" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit Emacs Config")
          "fr" '(counsel-recentf :wk "Find Recent Files")
          "TAB TAB" '(comment-line :wk "Comment Line/s")
+         "x" '(counsel-M-x :wk "Counsel M-x")
 
 
 ;; Opening a buffer to a split window
@@ -181,19 +182,23 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (clangd-mode . lsp)
+         (odin-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 ;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui :ensure (:wait t) :demand t :commands lsp-ui-mode)
 ;; if you are ivy user
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-ivy :ensure (:wait t) :demand t :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :ensure (:wait t) :demand t :commands lsp-treemacs-errors-list)
 
 ;; optionally if you want to use debugger
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; Odin
+(use-package odin-mode :ensure (:wait t) :demand t)
 
 (use-package all-the-icons
   :ensure (:wait t)

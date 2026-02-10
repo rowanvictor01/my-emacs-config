@@ -150,21 +150,21 @@
 (rv/leader-keys
   "w" '(:ignore t :wk "Windows")
   ;; Window splits
-  "w c" '(evil-window-delete :wk "Close window")
-  "w n" '(evil-window-new :wk "New window")
-  "w s" '(evil-window-split :wk "Horizontal split window")
-  "w v" '(evil-window-vsplit :wk "Vertical split window")
+  "w c" '(evil-window-delete :wk "Close Window")
+  "w n" '(evil-window-new :wk "New Window")
+  "w s" '(evil-window-split :wk "Horizontal Split Sindow")
+  "w v" '(evil-window-vsplit :wk "Vertical Split Window")
   ;; Window motions
-  "w h" '(evil-window-left :wk "Window left")
-  "w j" '(evil-window-down :wk "Window down")
-  "w k" '(evil-window-up :wk "Window up")
-  "w l" '(evil-window-right :wk "Window right")
-  "w w" '(evil-window-next :wk "Goto next window")
+  "w h" '(evil-window-left :wk "Window Left")
+  "w j" '(evil-window-down :wk "Window Down")
+  "w k" '(evil-window-up :wk "Window Up")
+  "w l" '(evil-window-right :wk "Window Right")
+  "w w" '(evil-window-next :wk "Goto Next Window")
   ;; Move Windows
-  "w H" '(buf-move-left :wk "Buffer move left")
-  "w J" '(buf-move-down :wk "Buffer move down")
-  "w K" '(buf-move-up :wk "Buffer move up")
-  "w L" '(buf-move-right :wk "Buffer move right"))
+  "w H" '(buf-move-left :wk "Buffer Move Left")
+  "w J" '(buf-move-down :wk "Buffer Move Down")
+  "w K" '(buf-move-up :wk "Buffer Move Up")
+  "w L" '(buf-move-right :wk "Buffer Move Right"))
 
 (use-package lsp-mode
   :ensure (:wait t)
@@ -361,6 +361,54 @@ one, an error is signaled."
 (electric-indent-mode -1)
 
 (require 'org-tempo)
+
+(use-package eshell-syntax-highlighting
+  :ensure (:wait t)
+  :demand t
+  :after esh-mode
+  :config
+  (eshell-syntax-highlighting-global-mode +1))
+
+;; eshell-syntax-highlighting -- adds fish/zsh-like syntax highlighting.
+;; eshell-rc-script -- your profile for eshell; like a bashrc for eshell.
+;; eshell-aliases-file -- sets an aliases file for the eshell.
+  
+(setq eshell-rc-script (concat user-emacs-directory "eshell/profile")
+      eshell-aliases-file (concat user-emacs-directory "eshell/aliases")
+      eshell-history-size 5000
+      eshell-buffer-maximum-lines 5000
+      eshell-hist-ignoredups t
+      eshell-scroll-to-bottom-on-input t
+      eshell-destroy-buffer-when-process-dies t
+      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
+
+(use-package vterm
+:ensure (:wait t)
+:demand t
+:config
+(setq shell-file-name "/usr/bin/zsh"
+      vterm-max-scrollback 5000))
+
+(use-package vterm-toggle
+  :ensure (:wait t)
+  :demand t
+  :after vterm
+  :config
+  (setq vterm-toggle-fullscreen-p nil)
+  (setq vterm-toggle-scope 'project)
+  (add-to-list 'display-buffer-alist
+               '((lambda (buffer-or-name _)
+                     (let ((buffer (get-buffer buffer-or-name)))
+                       (with-current-buffer buffer
+                         (or (equal major-mode 'vterm-mode)
+                             (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                  (display-buffer-reuse-window display-buffer-at-bottom)
+                  ;;(display-buffer-reuse-window display-buffer-in-direction)
+                  ;;display-buffer-in-direction/direction/dedicated is added in emacs27
+                  ;;(direction . bottom)
+                  ;;(dedicated . t) ;dedicated is supported in emacs27
+                  (reusable-frames . visible)
+                  (window-height . 0.35))))
 
 (use-package sudo-edit
   :ensure (:wait t)

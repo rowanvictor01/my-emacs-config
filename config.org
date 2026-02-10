@@ -26,6 +26,10 @@
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
   - [[#enable-org-tempo][Enable Org Tempo]]
+- [[#shells-and-terminals][SHELLS AND TERMINALS]]
+  - [[#eshell][Eshell]]
+  - [[#vterm][Vterm]]
+  - [[#vterm-toggle][Vterm-Toggle]]
 - [[#sudo-edit][SUDO EDIT]]
 - [[#which-key-package][WHICH KEY PACKAGE]]
 - [[#cleanup][CLEANUP]]
@@ -474,6 +478,73 @@ Org mode's built-in function for quickly creating a src block
 
 #+begin_src emacs-lisp
   (require 'org-tempo)
+#+end_src
+
+
+* SHELLS AND TERMINALS
+
+** Eshell
+An Emacs 'shell' that is written in Elisp
+
+#+begin_src emacs-lisp
+(use-package eshell-syntax-highlighting
+  :ensure (:wait t)
+  :demand t
+  :after esh-mode
+  :config
+  (eshell-syntax-highlighting-global-mode +1))
+
+;; eshell-syntax-highlighting -- adds fish/zsh-like syntax highlighting.
+;; eshell-rc-script -- your profile for eshell; like a bashrc for eshell.
+;; eshell-aliases-file -- sets an aliases file for the eshell.
+  
+(setq eshell-rc-script (concat user-emacs-directory "eshell/profile")
+      eshell-aliases-file (concat user-emacs-directory "eshell/aliases")
+      eshell-history-size 5000
+      eshell-buffer-maximum-lines 5000
+      eshell-hist-ignoredups t
+      eshell-scroll-to-bottom-on-input t
+      eshell-destroy-buffer-when-process-dies t
+      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
+#+end_src
+
+** Vterm
+A terminal emulator within Emacs. The 'shell-file-name' setting sets the shell to be used in M-x shell, M-x term, M-x ansi-term, and M-x vterm.
+By default, the shell is set to 'fish' but it could be changed to 'bash' or 'zsh' if you prefer.
+
+#+begin_src emacs-lisp
+(use-package vterm
+:ensure (:wait t)
+:demand t
+:config
+(setq shell-file-name "/usr/bin/zsh"
+      vterm-max-scrollback 5000))
+#+end_src
+
+** Vterm-Toggle
+Toggles between the vterm buffer and whatever buffer you are working on.
+
+#+begin_src emacs-lisp
+(use-package vterm-toggle
+  :ensure (:wait t)
+  :demand t
+  :after vterm
+  :config
+  (setq vterm-toggle-fullscreen-p nil)
+  (setq vterm-toggle-scope 'project)
+  (add-to-list 'display-buffer-alist
+               '((lambda (buffer-or-name _)
+                     (let ((buffer (get-buffer buffer-or-name)))
+                       (with-current-buffer buffer
+                         (or (equal major-mode 'vterm-mode)
+                             (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                  (display-buffer-reuse-window display-buffer-at-bottom)
+                  ;;(display-buffer-reuse-window display-buffer-in-direction)
+                  ;;display-buffer-in-direction/direction/dedicated is added in emacs27
+                  ;;(direction . bottom)
+                  ;;(dedicated . t) ;dedicated is supported in emacs27
+                  (reusable-frames . visible)
+                  (window-height . 0.35))))
 #+end_src
 
 

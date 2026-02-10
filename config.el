@@ -477,7 +477,7 @@ one, an error is signaled."
 	  which-key-side-window-max-height 0.25
 	  which-key-idle-delay 0.8
 	  which-key-max-description-length 25
-	  which-key-allow-imprecise-window-fit t
+	  which-key-allow-imprecise-window-fit nil
           which-key-separator " -> " ))
 
 ;; Disable auto-save files

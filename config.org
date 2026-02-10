@@ -26,11 +26,13 @@
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
   - [[#enable-org-tempo][Enable Org Tempo]]
+- [[#rainbow-mode][RAINBOW MODE]]
 - [[#shells-and-terminals][SHELLS AND TERMINALS]]
   - [[#eshell][Eshell]]
   - [[#vterm][Vterm]]
   - [[#vterm-toggle][Vterm-Toggle]]
 - [[#sudo-edit][SUDO EDIT]]
+- [[#theme][THEME]]
 - [[#which-key-package][WHICH KEY PACKAGE]]
 - [[#cleanup][CLEANUP]]
 
@@ -487,6 +489,18 @@ Org mode's built-in function for quickly creating a src block
 #+end_src
 
 
+* RAINBOW MODE
+Display the actual color as a background for any hex color value (ex. #ffffff).  The code block below enables rainbow-mode in all programming modes (prog-mode) as well as org-mode, which is why rainbow works in this document.
+
+#+begin_src emacs-lisp
+(use-package rainbow-mode
+  :ensure (:wait t)
+  :demand t
+  :hook 
+  ((org-mode prog-mode) . rainbow-mode))
+#+end_src
+
+
 * SHELLS AND TERMINALS
 
 ** Eshell
@@ -565,6 +579,15 @@ sudo-edit gives the ability to open files with sudo privileges or switch to edit
       (rv/leader-keys
         "s." '(sudo-edit-find-file :wk "Sudo Find File")
         "se" '(sudo-edit :wk "Sudo Edit File")))
+#+end_src
+
+
+* THEME
+The first of the two lines below designates the directory where will place all of our themes.  The second line loads our chosen theme which is dtmacs, a theme that I created with the help of the Emacs Theme Editor.
+
+#+begin_src emacs-lisp
+(add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+(load-theme 'soft-charcoal t)
 #+end_src
 
 

@@ -368,6 +368,12 @@ one, an error is signaled."
 
 (require 'org-tempo)
 
+(use-package rainbow-mode
+  :ensure (:wait t)
+  :demand t
+  :hook 
+  ((org-mode prog-mode) . rainbow-mode))
+
 (use-package eshell-syntax-highlighting
   :ensure (:wait t)
   :demand t
@@ -423,6 +429,9 @@ one, an error is signaled."
     (rv/leader-keys
       "s." '(sudo-edit-find-file :wk "Sudo Find File")
       "se" '(sudo-edit :wk "Sudo Edit File")))
+
+(add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+(load-theme 'soft-charcoal t)
 
 (use-package which-key
     :ensure (:wait t)

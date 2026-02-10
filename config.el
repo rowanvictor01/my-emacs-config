@@ -280,6 +280,26 @@ one, an error is signaled."
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
 
+(use-package company
+  :ensure (:wait t)
+  :demand t
+  :defer 2
+  :diminish
+  :custom
+  (company-begin-commands '(self-insert-command))
+  (company-idle-delay .1)
+  (company-minimum-prefix-length 2)
+  (company-show-numbers t)
+  (company-tooltip-align-annotations 't)
+  (global-company-mode t))
+
+(use-package company-box
+  :ensure (:wait t)
+  :demand t
+  :after company
+  :diminish
+  :hook (company-mode . company-box-mode))
+
 (use-package dashboard
   :ensure (:wait t)
   :demand t

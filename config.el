@@ -122,12 +122,16 @@
 
 ;; Evaluate
     (rv/leader-keys
-        "e" '(:ignore t :wk "Evaluate")
+        ;; Evaluate
+        "e" '(:ignore t :wk "Eshell/Evaluate")
         "eb" '(eval-buffer :wk "Evaluate Elisp In Buffer")
         "ed" '(eval-defun :wk "Evaluate Defun Containing Or After Point")
         "ee" '(eval-expression :wk "Evaluate An Elisp Expression")
         "el" '(eval-last-sexp :wk "Evaluate Elisp Expression Before Point")
-        "er" '(eval-region :wk "Evaluate Elisp In Region"))
+        "er" '(eval-region :wk "Evaluate Elisp In Region")
+        ;; Eshell
+        "es" '(eshell :wk "Eshell")
+        "eh" '(counsel-esh-history :wk "Eshell History"))
 
 ;; Help
     (rv/leader-keys
@@ -142,9 +146,11 @@
         "rb" '(point-to-register :wk "Register Buffer")
         "rj" '(jump-to-register :wk "Jump To Register"))
 
-;; Toggle term-mode
+;; Toggle
     (rv/leader-keys
-        "t" '(term :wk "Open term-mode"))
+        "t" '(:ignore t :wk "Toggle")
+        "tt" '(term :wk "Toggle term")
+        "tv" '(vterm-toggle :wk "Toggle vterm"))
 
 ;; Window Split Navigation
 (rv/leader-keys

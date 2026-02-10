@@ -274,6 +274,28 @@ one, an error is signaled."
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
 
+(use-package dashboard
+  :ensure (:wait t)
+  :demand t
+  :init
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  ;;(setq dashboard-startup-banner "~/Pictures/spongebob-floating-earphones.jpg")  ;; use custom image as banner
+  (setq dashboard-center-content t) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 3)
+                          (projects . 3)
+                          (registers . 3)))
+  :custom
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book")))
+  :config
+  (dashboard-setup-startup-hook))
+
 (set-face-attribute 'default nil
       :font "JetBrainsMono Nerd Font"
       :height 150
@@ -367,6 +389,12 @@ one, an error is signaled."
 (electric-indent-mode -1)
 
 (require 'org-tempo)
+
+(use-package projectile
+  :ensure (:wait t)
+  :demand t
+  :config
+  (projectile-mode 1))
 
 (use-package rainbow-mode
   :ensure (:wait t)

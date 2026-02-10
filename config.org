@@ -14,6 +14,7 @@
   - [[#avy-package][AVY Package]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#buffer-move][BUFFER MOVE]]
+- [[#dashboard][DASHBOARD]]
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting The Font Face]]
   - [[#zooming-inout][Zooming In/Out]]
@@ -26,6 +27,7 @@
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
   - [[#enable-org-tempo][Enable Org Tempo]]
+- [[#projectile][PROJECTILE]]
 - [[#rainbow-mode][RAINBOW MODE]]
 - [[#shells-and-terminals][SHELLS AND TERMINALS]]
   - [[#eshell][Eshell]]
@@ -345,6 +347,34 @@ one, an error is signaled."
 #+end_src
 
 
+* DASHBOARD
+Emacs Dashboard is an extensible startup screen showing your recent files, bookmarks, agenda items, and an Emacs banner.
+
+#+begin_src emacs-lisp
+(use-package dashboard
+  :ensure (:wait t)
+  :demand t
+  :init
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  ;;(setq dashboard-startup-banner "~/Pictures/spongebob-floating-earphones.jpg")  ;; use custom image as banner
+  (setq dashboard-center-content t) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 3)
+                          (projects . 3)
+                          (registers . 3)))
+  :custom
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book")))
+  :config
+  (dashboard-setup-startup-hook))
+#+end_src
+
+
 * FONTS
 Defining the various fonts that Emacs will use.
 
@@ -486,6 +516,19 @@ Org mode's built-in function for quickly creating a src block
 
 #+begin_src emacs-lisp
   (require 'org-tempo)
+#+end_src
+
+
+* PROJECTILE
+Projectile is a project interaction library for Emacs.
+It should be noted that many projectile commands do not work if you have set “fish” as the “shell-file-name” for Emacs.
+
+#+begin_src emacs-lisp
+(use-package projectile
+  :ensure (:wait t)
+  :demand t
+  :config
+  (projectile-mode 1))
 #+end_src
 
 

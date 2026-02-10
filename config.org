@@ -15,6 +15,7 @@
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#buffer-move][BUFFER MOVE]]
 - [[#dashboard][DASHBOARD]]
+- [[#diminish][DIMINISH]]
 - [[#flycheck][FLYCHECK]]
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting The Font Face]]
@@ -382,7 +383,17 @@ Emacs Dashboard is an extensible startup screen showing your recent files, bookm
 #+end_src
 
 
+* DIMINISH
+This package implements hiding or abbreviation of the modeline displays (lighters) of minor-modes.
+With this package installed, you can add ‘:diminish’ to any use-package block to hide that particular mode in the modeline.
+
+#+begin_src emacs-lisp
+(use-package diminish :ensure (:wait t) :demand t)
+#+end_src
+
+
 * FLYCHECK
+A modern syntax checking extension for Emacs.
 Install 'luacheck' from your Linux distro’s repositories for flycheck to work correctly with lua files.
 Install 'python-pylint' for flycheck to work with python files.
 Haskell works with flycheck as long as 'haskell-ghc' or 'haskell-stack-ghc' is installed.
@@ -472,12 +483,14 @@ Bindings for quickly zooming in and out
 (use-package counsel
   :ensure (:wait t)
   :demand t
+  :diminish
   :after ivy
   :config (counsel-mode))
 
 (use-package ivy
   :ensure (:wait t)
   :demand t
+  :diminish
   :bind
   ;; ivy-resume resumes the last Ivy-based completion.
   (("C-c C-r" . ivy-resume)
@@ -548,6 +561,7 @@ It should be noted that many projectile commands do not work if you have set “
 (use-package projectile
   :ensure (:wait t)
   :demand t
+  :diminish
   :config
   (projectile-mode 1))
 #+end_src
@@ -560,6 +574,7 @@ Display the actual color as a background for any hex color value (ex. #ffffff). 
 (use-package rainbow-mode
   :ensure (:wait t)
   :demand t
+  :diminish
   :hook 
   ((org-mode prog-mode) . rainbow-mode))
 #+end_src
@@ -661,6 +676,7 @@ The first of the two lines below designates the directory where will place all o
   (use-package which-key
       :ensure (:wait t)
       :demand t  ; Must load before defining keys
+      :diminish
       :init
       (which-key-mode 1)
       :config

@@ -173,6 +173,10 @@
   "w K" '(buf-move-up :wk "Buffer Move Up")
   "w L" '(buf-move-right :wk "Buffer Move Right"))
 
+;; Odin
+(use-package odin-mode :ensure (:wait t) :demand t)
+
+;; LSP
 (use-package lsp-mode
   :ensure (:wait t)
   :demand t
@@ -196,9 +200,6 @@
 ;; optionally if you want to use debugger
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-
-;; Odin
-(use-package odin-mode :ensure (:wait t) :demand t)
 
 (use-package all-the-icons
   :ensure (:wait t)
@@ -301,6 +302,14 @@ one, an error is signaled."
   :config
   (dashboard-setup-startup-hook))
 
+(use-package diminish :ensure (:wait t) :demand t)
+
+(use-package flycheck
+  :ensure (:wait t)
+  :demand t
+  :defer t
+  :init (global-flycheck-mode))
+
 (set-face-attribute 'default nil
       :font "JetBrainsMono Nerd Font"
       :height 150
@@ -348,12 +357,14 @@ one, an error is signaled."
 (use-package counsel
   :ensure (:wait t)
   :demand t
+  :diminish
   :after ivy
   :config (counsel-mode))
 
 (use-package ivy
   :ensure (:wait t)
   :demand t
+  :diminish
   :bind
   ;; ivy-resume resumes the last Ivy-based completion.
   (("C-c C-r" . ivy-resume)
@@ -398,12 +409,14 @@ one, an error is signaled."
 (use-package projectile
   :ensure (:wait t)
   :demand t
+  :diminish
   :config
   (projectile-mode 1))
 
 (use-package rainbow-mode
   :ensure (:wait t)
   :demand t
+  :diminish
   :hook 
   ((org-mode prog-mode) . rainbow-mode))
 
@@ -469,6 +482,7 @@ one, an error is signaled."
 (use-package which-key
     :ensure (:wait t)
     :demand t  ; Must load before defining keys
+    :diminish
     :init
     (which-key-mode 1)
     :config

@@ -715,6 +715,13 @@ The first of the two lines below designates the directory where will place all o
 
 #+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+(use-package doom-themes
+  :ensure (:wait t)
+  :demand t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+
 (load-theme 'soft-charcoal t)
 #+end_src
 

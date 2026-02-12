@@ -515,6 +515,13 @@ one, an error is signaled."
       "se" '(sudo-edit :wk "Sudo Edit File")))
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+(use-package doom-themes
+  :ensure (:wait t)
+  :demand t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+
 (load-theme 'soft-charcoal t)
 
 (use-package which-key

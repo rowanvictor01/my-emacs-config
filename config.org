@@ -247,6 +247,11 @@
                 ("C-c C-c" . 'odin-build-project)
                 ("C-c C-t" . 'odin-test-project)))
 
+  ;; ELIXIR SETUP
+  (use-package elixir-mode
+    :ensure (:wait t)
+    :demand t)
+
   ;; LSP
   (use-package lsp-mode
     :ensure (:wait t)

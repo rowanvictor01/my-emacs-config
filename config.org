@@ -283,6 +283,17 @@
 
 ** AVY Package 
 
+#+begin_src emacs-lisp
+(use-package avy
+  :ensure (:wait t)
+  :demand t
+  :config
+    (rv/leader-keys
+        "j" '(:ignore t :wk "Jump To...")
+        "jw" '(avy-goto-word-0 :wk "Jump To Word")
+        "jl" '(avy-goto-line :wk "Jump To Line")))
+#+end_src
+
 
 * ALL THE ICONS
 This is an icon set that can be used with dashboard, dired, ibuffer, and other Emacs programs

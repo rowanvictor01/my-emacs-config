@@ -219,6 +219,15 @@
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
+(use-package avy
+  :ensure (:wait t)
+  :demand t
+  :config
+    (rv/leader-keys
+        "j" '(:ignore t :wk "Jump To...")
+        "jw" '(avy-goto-word-0 :wk "Jump To Word")
+        "jl" '(avy-goto-line :wk "Jump To Line")))
+
 (use-package all-the-icons
   :ensure (:wait t)
   :demand t

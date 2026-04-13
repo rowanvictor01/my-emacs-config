@@ -64,6 +64,9 @@
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   :config
+  (setq evil-insert-state-cursor '(box "red"))
+  (setq evil-normal-state-cursor '(box "gray"))
+  (setq evil-visual-state-cursor '(box "blue"))
   (evil-mode 1))
 
 (use-package evil-collection
@@ -531,7 +534,40 @@ one, an error is signaled."
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 
-(load-theme 'soft-charcoal t)
+(use-package base16-theme
+  :ensure (:wait t)
+  :demand t)
+
+(use-package hyperstitional-themes
+  :ensure (:wait t)
+  :demand t)
+
+(use-package color-theme-modern
+  :ensure (:wait t)
+  :demand t)
+
+(use-package night-owl-theme
+  :ensure (:wait t)
+  :demand t)
+
+(use-package ubuntu-theme
+  :ensure (:wait t)
+  :demand t)
+
+(use-package vegetative-theme
+  :ensure (:wait t)
+  :demand t)
+
+
+;(load-theme 'soft-charcoal t)
+(load-theme 'vegetative t)
+;(load-theme 'ubuntu t)
+;(load-theme 'hyperstitional-themes-digitalsear-inverted t)
+;(load-theme 'lethe t)
+;(load-theme 'base16-vice t)
+;(load-theme 'night-owl t)
+;(load-theme 'base16-gruvbox-dark-hard t)
+;(load-theme 'base16-tokyo-night-dark t)
 
 (use-package which-key
     :ensure (:wait t)

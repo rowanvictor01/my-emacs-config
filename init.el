@@ -7,9 +7,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("4d5d11bfef87416d85673947e3ca3d3d5d985ad57b02a7bb2e32beaf785a100e" default))
- '(package-selected-packages '(elixir-mode odin-mode))
+ '(package-selected-packages '(odin-mode))
  '(package-vc-selected-packages
    '((odin-mode :vc-backend Git :url "https://git.sr.ht/~mgmarlow/odin-mode"))))
 (custom-set-faces
